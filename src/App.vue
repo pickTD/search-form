@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchForm/>
+    <SearchResult/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import { mapMutations } from 'vuex';
+
+import SearchForm from './components/SearchForm/SearchForm.vue';
+import SearchResult from './components/SearchResult.vue';
+
+import data from './helpers/data';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    SearchForm,
+    SearchResult,
+  },
+  methods: {
+    ...mapMutations(['setData']),
+  },
+  mounted() {
+    this.setData(data);
   },
 };
 </script>
